@@ -1,0 +1,29 @@
+{
+    "name": "basewebapp",
+    "settings": {},
+    "xdsVersion": "2.2.2",
+    "xdsBuild": 991,
+    "schemaVersion": 1,
+    "upgradeVersion": 210000000503,
+    "framework": "ext42",
+    "topInstanceFileMap": {
+        "0d051565-525f-4c70-bdc5-3be9a272fcc3": {
+            "paths": [
+                "metadata/resource/Library"
+            ],
+            "className": "Library"
+        }
+    },
+    "viewOrderMap": {
+        "view": [],
+        "store": [],
+        "controller": [],
+        "model": [],
+        "resource": [
+            "0d051565-525f-4c70-bdc5-3be9a272fcc3"
+        ],
+        "app": [
+            "application"
+        ]
+    }
+}
