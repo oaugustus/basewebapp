@@ -1,6 +1,9 @@
 {
     "name": "basewebapp",
-    "settings": {},
+    "settings": {
+        "urlPrefix": "http://localhost/basewebapp/",
+        "exportPath": ""
+    },
     "xdsVersion": "2.2.2",
     "xdsBuild": 991,
     "schemaVersion": 1,
@@ -12,15 +15,56 @@
                 "metadata/resource/Library"
             ],
             "className": "Library"
+        },
+        "85f87980-3558-4a85-b32a-5ac618b49ec7": {
+            "paths": [
+                "metadata/resource/css"
+            ],
+            "className": "css"
+        },
+        "a553b0a5-c16d-4460-a013-5d882eaf141e": {
+            "paths": [
+                "metadata/resource/css1"
+            ],
+            "className": "css1"
+        },
+        "1482c17c-7c96-4250-b20e-c8532baf6c47": {
+            "paths": [
+                "metadata/view/UIViewport",
+                "app/view/override/UIViewport.js",
+                "app/view/UIViewport.js",
+                "app/view/Viewport.js"
+            ],
+            "className": "UIViewport"
+        },
+        "cc4f24e4-a32f-425a-8b11-9b48b365d987": {
+            "paths": [
+                "metadata/view/LoginPanel",
+                "app/view/override/LoginPanel.js",
+                "app/view/LoginPanel.js"
+            ],
+            "className": "LoginPanel"
+        },
+        "21e9fcbb-568a-4780-a9f7-d44ba37114ee": {
+            "paths": [
+                "metadata/resource/css2"
+            ],
+            "className": "css2"
         }
     },
     "viewOrderMap": {
-        "view": [],
+        "view": [
+            "1482c17c-7c96-4250-b20e-c8532baf6c47",
+            "cc4f24e4-a32f-425a-8b11-9b48b365d987"
+        ],
         "store": [],
         "controller": [],
         "model": [],
         "resource": [
-            "0d051565-525f-4c70-bdc5-3be9a272fcc3"
+            "0d051565-525f-4c70-bdc5-3be9a272fcc3",
+            "85f87980-3558-4a85-b32a-5ac618b49ec7",
+            "a553b0a5-c16d-4460-a013-5d882eaf141e",
+            "21e9fcbb-568a-4780-a9f7-d44ba37114ee"
         ],
         "app": [
             "application"
