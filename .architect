@@ -315,11 +315,11 @@
         "topInstance": "cecbb789-55f4-41ca-8284-15b8f309c0ee"
     },
     "inspectorState": {
-        "topInstance": "cecbb789-55f4-41ca-8284-15b8f309c0ee",
-        "selectedInstance": "194ef12b-2f2a-445d-8241-a11835740b0a"
+        "topInstance": null,
+        "selectedInstance": null
     },
     "codeState": {
-        "topInstance": "cecbb789-55f4-41ca-8284-15b8f309c0ee"
+        "topInstance": null
     },
     "editMode": "design"
 }
