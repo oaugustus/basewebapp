@@ -6,8 +6,7 @@
     },
     "codeClass": null,
     "userConfig": {
-        "activeItem": 1,
-        "designer|userClassName": "UIViewport",
+        "designer|userClassName": "ui.Viewport",
         "designer|userAlias": "uiviewport",
         "requires": [
             "Neton.window.Flash"
@@ -132,8 +131,8 @@
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "dock": "top",
                         "layout|margins": null,
+                        "dock": "top",
                         "height": 1,
                         "itemId": "ctSeparator",
                         "margin": null,

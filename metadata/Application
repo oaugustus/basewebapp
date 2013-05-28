@@ -7,13 +7,19 @@
     "codeClass": null,
     "userConfig": {
         "views": [
-            "UIViewport",
-            "LoginPanel"
+            "ui.LoginPanel",
+            "ui.Viewport",
+            "ui.DashboardPanel",
+            "ui.ChangePassWindow"
         ],
         "requires": [
             "Ext.ux.Router"
         ],
         "autoCreateViewport": true,
+        "controllers": [
+            "ui.LoginController",
+            "ui.DashboardController"
+        ],
         "name": "App"
     },
     "designerId": "application",
@@ -28,7 +34,15 @@
             "userConfig": {
                 "fn": "launch",
                 "implHandler": [
-                    "alert('Oi');"
+                    "Actions.NetonApp_Security.isLogged({}, function(response){",
+                    "if (response === false){",
+                    "    // mostra a página de login",
+                    "    this.getController('ui.LoginController').showLoginPanel();",
+                    "} else {",
+                    "    this.setSession(response);",
+                    "    this.getController('ui.DashboardController').showDashboardPanel(response);",
+                    "}",
+                    "},this);"
                 ]
             },
             "designerId": "64d42f5a-35ca-43e9-896b-68ba07f67431"
@@ -52,6 +66,39 @@
                 "designer|displayName": "Loader"
             },
             "designerId": "59285e37-7d8c-46bb-83d5-7f6bdbb78940"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "setSession",
+                "designer|params": [
+                    "session"
+                ],
+                "implHandler": [
+                    "this.session = session;"
+                ]
+            },
+            "designerId": "bf5d5e2f-df14-4f85-93e6-d0e6be727fd3"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "getSession",
+                "implHandler": [
+                    "return this.session;"
+                ]
+            },
+            "designerId": "e57f3571-a09c-46c7-a98b-a2f1ed2ec846"
         }
     ]
 }

@@ -30,14 +30,36 @@ Ext.application({
         'Ext.ux.Router'
     ],
     views: [
-        'UIViewport',
-        'LoginPanel'
+        'ui.LoginPanel',
+        'ui.Viewport',
+        'ui.DashboardPanel',
+        'ui.ChangePassWindow'
     ],
     autoCreateViewport: true,
+    controllers: [
+        'ui.LoginController',
+        'ui.DashboardController'
+    ],
     name: 'App',
 
     launch: function() {
+        Actions.NetonApp_Security.isLogged({}, function(response){
+        if (response === false){
+            // mostra a página de login
+            this.getController('ui.LoginController').showLoginPanel();
+        } else {
+            this.setSession(response);
+            this.getController('ui.DashboardController').showDashboardPanel(response);
+        }
+    },this);
+    },
 
+    setSession: function(session) {
+        this.session = session;
+    },
+
+    getSession: function() {
+        return this.session;
     }
 
 });

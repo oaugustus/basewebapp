@@ -9,7 +9,7 @@
         "frame": true,
         "height": null,
         "width": 304,
-        "designer|userClassName": "LoginPanel",
+        "designer|userClassName": "ui.LoginPanel",
         "designer|userAlias": "loginpanel",
         "layout": "fit",
         "iconCls": null,
@@ -38,6 +38,8 @@
                     },
                     "codeClass": null,
                     "userConfig": {
+                        "height": 161,
+                        "itemId": "panelLogin",
                         "defaults": [
                             "{",
                             "    labelAlign: 'top',",
@@ -57,7 +59,7 @@
                             },
                             "codeClass": null,
                             "userConfig": {
-                                "itemId": "panelLogin"
+                                "itemId": null
                             },
                             "designerId": "2b6bb7d8-2f45-4cf2-8c3b-fab6abe2d64b"
                         },
@@ -74,7 +76,8 @@
                                 "fieldLabel": "Login",
                                 "labelClsExtra": "label-bold",
                                 "name": "login",
-                                "allowBlank": false
+                                "allowBlank": false,
+                                "enableKeyEvents": true
                             },
                             "designerId": "ead56b37-dc4a-4634-b59f-a7dce1758151"
                         },
@@ -91,7 +94,9 @@
                                 "fieldLabel": "Senha",
                                 "labelClsExtra": "label-bold",
                                 "name": "senha",
-                                "allowBlank": false
+                                "inputType": "password",
+                                "allowBlank": false,
+                                "enableKeyEvents": true
                             },
                             "designerId": "99d2806e-edf4-4452-a230-69a45913ca97"
                         },
@@ -129,7 +134,7 @@
                                     "userConfig": {
                                         "layout|flex": null
                                     },
-                                    "designerId": "7070eb38-3b08-44ad-b6f2-755e0791a0a3",
+                                    "designerId": "ee644c00-0fd5-498c-8255-0589b91dc955",
                                     "cn": [
                                         {
                                             "type": "Ext.button.Button",
@@ -139,18 +144,13 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
+                                                "formBind": true,
                                                 "itemId": "btnAcessar",
                                                 "margin": "0 5 0 0",
-                                                "style": null,
-                                                "ui": null,
-                                                "iconCls": null,
                                                 "scale": "medium",
                                                 "text": "Acessar"
                                             },
-                                            "configAlternates": {
-                                                "style": "string"
-                                            },
-                                            "designerId": "8866b034-d48f-4f69-869f-fb3ddc6a0c7c"
+                                            "designerId": "24c0391a-2cbe-4c14-8859-72b92fef9264"
                                         }
                                     ]
                                 }
@@ -201,7 +201,9 @@
                                 "itemId": "txtEmail",
                                 "fieldLabel": "Email",
                                 "name": "email",
-                                "allowBlank": false
+                                "allowBlank": false,
+                                "enableKeyEvents": true,
+                                "vtype": "email"
                             },
                             "designerId": "b2d8f32b-70a8-4e4c-87df-1837f0290b57"
                         },
@@ -230,34 +232,21 @@
                                     "designerId": "5c2146ae-21a6-462c-892b-80251007b565"
                                 },
                                 {
-                                    "type": "Ext.container.Container",
+                                    "type": "Ext.button.Button",
                                     "reference": {
                                         "name": "items",
                                         "type": "array"
                                     },
                                     "codeClass": null,
                                     "userConfig": {
-                                        "layout|flex": null
+                                        "layout|flex": null,
+                                        "layout|margins": "0 5 0 0",
+                                        "formBind": true,
+                                        "itemId": "btnSolicitarSenha",
+                                        "scale": "medium",
+                                        "text": "Solicitar a senha"
                                     },
-                                    "designerId": "cd830d37-afac-47f3-a707-67e36be170eb",
-                                    "cn": [
-                                        {
-                                            "type": "Ext.button.Button",
-                                            "reference": {
-                                                "name": "items",
-                                                "type": "array"
-                                            },
-                                            "codeClass": null,
-                                            "userConfig": {
-                                                "itemId": "btnSolicitarSenha",
-                                                "margin": "0 5 0 0",
-                                                "iconCls": null,
-                                                "scale": "medium",
-                                                "text": "Solicitar senha"
-                                            },
-                                            "designerId": "16a02d8f-2e3b-46f0-9f0c-fe2497752a31"
-                                        }
-                                    ]
+                                    "designerId": "89a8477d-1305-4eb3-9d94-6050ef8dc6ab"
                                 }
                             ]
                         }

@@ -1,0 +1,288 @@
+{
+    "type": "Ext.app.Controller",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "ui.DashboardController"
+    },
+    "designerId": "4ae86203-6e98-44dd-b29a-1de4737ae823",
+    "cn": [
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "showDashboardPanel",
+                "implHandler": [
+                    "var viewport = this.getUiViewport();",
+                    "",
+                    "Actions.NetonApp_Security.isLogged({}, function(response){",
+                    "",
+                    "if (response != false){",
+                    "    this.application.setSession(response);",
+                    "",
+                    "    if (!viewport.down('#panelDashboard')){    ",
+                    "        viewport.add({",
+                    "            xtype: 'dashboardpanel',",
+                    "            itemId: 'panelDashboard'",
+                    "        });    ",
+                    "    }",
+                    "",
+                    "    this.getUiViewport().getLayout().setActiveItem('panelDashboard');            ",
+                    "}",
+                    "},this);"
+                ]
+            },
+            "designerId": "ed84aaea-74b6-457d-baa2-7359b18f1696"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "uiViewport",
+                "selector": "uiviewport",
+                "xtype": "Ext.container.Viewport"
+            },
+            "designerId": "980e1e41-9189-4de5-a120-3d0b5fea6ed5"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "exitClick",
+                "implHandler": [
+                    "Ext.Msg.confirm('Confirme', 'Deseja realmente sair do sistema?', function(btn){",
+                    "    if ('yes' == btn){",
+                    "        Actions.NetonApp_Security.logout({}, function(response){",
+                    "            location.reload();",
+                    "        });",
+                    "    }",
+                    "},this);"
+                ],
+                "name": "click",
+                "scope": "me",
+                "designer|targetType": "Ext.button.Button",
+                "designer|controlQuery": "dashboardpanel #btnSair"
+            },
+            "designerId": "55e5e4d1-5914-44b2-96e5-616afa7a1df9"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onDashboardShow",
+                "implHandler": [
+                    "var session = this.application.getSession();",
+                    "",
+                    "component.down('#btnUsuario').setText(session['user.name']).doComponentLayout();"
+                ],
+                "name": "show",
+                "scope": "me",
+                "designer|targetType": "Ext.panel.Panel",
+                "designer|controlQuery": "dashboardpanel"
+            },
+            "designerId": "25ed2e35-c94d-429f-8a09-b88d826e8c1e"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onTrocaSenhaClick",
+                "implHandler": [
+                    "var win = Ext.widget('changepasswindow');",
+                    "",
+                    "win.show();"
+                ],
+                "name": "click",
+                "scope": "me",
+                "designer|targetType": "Ext.button.Button",
+                "designer|controlQuery": "dashboardpanel #btnTrocaSenha"
+            },
+            "designerId": "8f155516-e16f-4828-9a76-2b847f593114"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onChangePassShow",
+                "implHandler": [
+                    "component.down('#txtSenha').focus(false, 250);"
+                ],
+                "name": "show",
+                "scope": "me",
+                "designer|targetType": "Ext.window.Window",
+                "designer|controlQuery": "changepasswindow"
+            },
+            "designerId": "d51bd8bf-6678-4f4f-95ff-f3820cca6c4d"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "changePassFocusNextField",
+                "implHandler": [
+                    "if (e.getKey() == 13){",
+                    "    try{",
+                    "        textfield.nextNode().focus();",
+                    "    } catch(e){",
+                    "        if (textfield.up('form').isValid())",
+                    "\t        this.requestChangePass();",
+                    "    }",
+                    "}"
+                ],
+                "name": "keypress",
+                "scope": "me",
+                "designer|targetType": "Ext.form.field.Text",
+                "designer|controlQuery": "changepasswindow #form field"
+            },
+            "designerId": "09142063-7877-47dd-991a-b9197fa1fdb7"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "changePassWindow",
+                "selector": "changepasswindow",
+                "xtype": "Ext.window.Window"
+            },
+            "designerId": "d3c48fc5-b6c5-4935-be09-25d93e9cbf16"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "requestChangePass",
+                "implHandler": [
+                    "var me = this,",
+                    "    win = me.getChangePassWindow();",
+                    "",
+                    "win.setLoading('Aguarde...');",
+                    "",
+                    "Actions.NetonApp_Security.changePass(win.down('#form').getValues(), me.responseChangePass, me);"
+                ]
+            },
+            "designerId": "962165d3-254d-4127-97e1-066c189862aa"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "responseChangePass",
+                "designer|params": [
+                    "response"
+                ],
+                "implHandler": [
+                    "var me = this,",
+                    "    win = me.getChangePassWindow();",
+                    "",
+                    "// se a troca de senha ocorreu com sucesso",
+                    "if (response){",
+                    "    // fecha a janela",
+                    "    win.close();",
+                    "    ",
+                    "    // exibe mensagem de sucesso na troca de senha",
+                    "    Neton.Msg.flash({",
+                    "        type: 'success',",
+                    "        msg: 'Senha alterada com sucesso!',",
+                    "        width: 250",
+                    "    });",
+                    "} else { // se não foi possível trocar a senha",
+                    "    // fecha a máscara de carregamento",
+                    "    win.setLoading(false);",
+                    "    ",
+                    "    // exibe mensagem de erro",
+                    "    Neton.Msg.flash({",
+                    "        type: 'error',",
+                    "        msg: 'A senha atual está incorreta!',",
+                    "        width: 250,",
+                    "        callback: function(){",
+                    "            win.down('#txtSenha').focus(true);",
+                    "        }",
+                    "    });",
+                    "}"
+                ]
+            },
+            "designerId": "b990165b-5404-410a-af5d-a046927d4382"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "changePassConfirmarTrocaClick",
+                "implHandler": [
+                    "this.requestChangePass();"
+                ],
+                "name": "click",
+                "scope": "me",
+                "designer|targetType": "Ext.button.Button",
+                "designer|controlQuery": "changepasswindow #btnConfirmar"
+            },
+            "designerId": "09a0d2a0-123b-4b81-84bd-bfa756912083"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "changePassCancelarClick",
+                "implHandler": [
+                    "this.getChangePassWindow().close();"
+                ],
+                "name": "click",
+                "scope": "me",
+                "designer|targetType": "Ext.button.Button",
+                "designer|controlQuery": "changepasswindow #btnCancelar"
+            },
+            "designerId": "4d68fb18-ad07-4415-84b0-e0c058f52bec"
+        }
+    ]
+}

@@ -8,6 +8,28 @@ body{
     height: 50px;
 }
 
+/* overrides */
+.x-tip {
+    maxWidth: 300 !important;
+}
+.x-tip-body {
+    width: auto !important;
+}
+.x-tip-body span {
+    width: auto !important;
+}
+
+.x-mask-msg-text {
+    padding: 2px 0px 2px 20px;
+    background-repeat: no-repeat;
+    background-position: 0 center;
+}
+
+.x-mask-msg-inner {
+    color: #666;
+    font: normal 11px helvetica,arial,verdana,sans-serif;
+}
+
 /* Estilo da toolbar principal do sistema */
 .sys-toolbar{
     background-color: #ECECEC !important;

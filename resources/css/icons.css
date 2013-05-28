@@ -6,3 +6,8 @@
     font-size: 18px;
     margin-top: 5px;
 }
+
+
+.icon-exit{
+    background-image: url(../images/logout.png) !important;
+}

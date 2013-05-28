@@ -1,0 +1,164 @@
+{
+    "type": "Ext.panel.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "container|align": "center",
+        "container|pack": "center",
+        "baseCls": null,
+        "itemId": "panelDashboard",
+        "designer|userClassName": "ui.DashboardPanel",
+        "designer|userAlias": "dashboardpanel",
+        "layout": "vbox",
+        "bodyBorder": false,
+        "bodyStyle": "background-color: transparent !important;"
+    },
+    "configAlternates": {
+        "bodyStyle": "string"
+    },
+    "designerId": "cecbb789-55f4-41ca-8284-15b8f309c0ee",
+    "cn": [
+        {
+            "type": "Ext.toolbar.Toolbar",
+            "reference": {
+                "name": "dockedItems",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dock": "top",
+                "cls": "sys-toolbar",
+                "itemId": "dashboardToolbar"
+            },
+            "designerId": "ec9d1f31-06a6-48cf-9d31-8491dcfe5e9a",
+            "cn": [
+                {
+                    "type": "Ext.container.Container",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": null,
+                        "cls": "logo",
+                        "height": 50,
+                        "itemId": "ctLogo",
+                        "style": [
+                            "{",
+                            "    backgroundColor: '#ECECEC'",
+                            "}"
+                        ],
+                        "width": 214
+                    },
+                    "designerId": "bb5ef7dd-5e91-4880-8840-267c47fee14a"
+                },
+                {
+                    "type": "Ext.toolbar.Fill",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": null
+                    },
+                    "designerId": "8fac0d29-5c37-4c9f-963c-4422caf33a8a"
+                },
+                {
+                    "type": "Ext.button.Split",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": null,
+                        "itemId": "btnUsuario",
+                        "iconCls": "icon-user",
+                        "text": "Usuário"
+                    },
+                    "designerId": "194ef12b-2f2a-445d-8241-a11835740b0a",
+                    "cn": [
+                        {
+                            "type": "Ext.menu.Menu",
+                            "reference": {
+                                "name": "menu",
+                                "type": "object"
+                            },
+                            "codeClass": null,
+                            "designerId": "2852b484-a487-4dce-9d4c-8c1a547e3999",
+                            "cn": [
+                                {
+                                    "type": "Ext.menu.Item",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "itemId": "btnTrocaSenha",
+                                        "iconCls": null,
+                                        "text": "Trocar senha"
+                                    },
+                                    "designerId": "f4711176-a0cc-4ae4-bf86-669fcb45d1e2"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.toolbar.Separator",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": null
+                    },
+                    "designerId": "d966dd60-b8c4-42d3-9352-3a64c00ff772"
+                },
+                {
+                    "type": "Ext.button.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": null,
+                        "itemId": "btnSair",
+                        "iconCls": "icon-exit",
+                        "scale": "medium",
+                        "text": "Sair"
+                    },
+                    "designerId": "c3b5b2e1-df0c-4854-b4a0-1f21b19e90d1"
+                }
+            ]
+        },
+        {
+            "type": "Ext.container.Container",
+            "reference": {
+                "name": "dockedItems",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "layout|margins": null,
+                "dock": "top",
+                "height": 1,
+                "itemId": "ctSeparator",
+                "margin": null,
+                "style": "background-color: #fff;"
+            },
+            "configAlternates": {
+                "style": "string"
+            },
+            "designerId": "31f27882-cfd2-4c4a-b9fb-be7c56690660"
+        }
+    ]
+}
