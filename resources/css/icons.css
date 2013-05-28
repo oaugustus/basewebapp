@@ -11,3 +11,11 @@
 .icon-exit{
     background-image: url(../images/logout.png) !important;
 }
+
+.icon-lock{
+	background-image: url(../images/lock.png) !important;
+}
+
+.icon-user-edit{
+	background-image: url(../images/user-edit.png) !important;
+}

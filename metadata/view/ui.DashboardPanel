@@ -78,7 +78,7 @@
                     "userConfig": {
                         "layout|flex": null,
                         "itemId": "btnUsuario",
-                        "iconCls": "icon-user",
+                        "iconCls": "icon-user-edit",
                         "text": "Usuário"
                     },
                     "designerId": "194ef12b-2f2a-445d-8241-a11835740b0a",
@@ -101,7 +101,7 @@
                                     "codeClass": null,
                                     "userConfig": {
                                         "itemId": "btnTrocaSenha",
-                                        "iconCls": null,
+                                        "iconCls": "icon-lock",
                                         "text": "Trocar senha"
                                     },
                                     "designerId": "f4711176-a0cc-4ae4-bf86-669fcb45d1e2"

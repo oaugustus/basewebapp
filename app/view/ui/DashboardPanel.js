@@ -53,7 +53,7 @@ Ext.define('App.view.ui.DashboardPanel', {
                         {
                             xtype: 'splitbutton',
                             itemId: 'btnUsuario',
-                            iconCls: 'icon-user',
+                            iconCls: 'icon-user-edit',
                             text: 'Usuário',
                             menu: {
                                 xtype: 'menu',
@@ -61,6 +61,7 @@ Ext.define('App.view.ui.DashboardPanel', {
                                     {
                                         xtype: 'menuitem',
                                         itemId: 'btnTrocaSenha',
+                                        iconCls: 'icon-lock',
                                         text: 'Trocar senha'
                                     }
                                 ]

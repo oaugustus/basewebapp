@@ -21,6 +21,7 @@ Ext.define('App.view.ui.ChangePassWindow', {
     layout: {
         type: 'fit'
     },
+    iconCls: 'icon-lock',
     title: 'Troca de Senha',
     modal: true,
 
