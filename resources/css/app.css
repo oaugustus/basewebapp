@@ -32,8 +32,8 @@ body{
 
 /* Estilo da toolbar principal do sistema */
 .sys-toolbar{
-    background-color: #ECECEC !important;
-    border-bottom: solid 1px #DDDDDD !important;
+   /* background-color: #ECECEC !important;*/
+    border-bottom: solid 1px #DDDDDD !important;    
 }
 
 .sys-toolbar .x-btn-inner{
@@ -59,4 +59,14 @@ body{
 .label-bold{
     font-weight: bold;
     color: #555;
+}
+
+.breadcrumb {
+  padding: 8px 15px;
+  margin: 0 0 20px;
+  list-style: none;
+  background-color: #f5f5f5;
+  -webkit-border-radius: 4px;
+     -moz-border-radius: 4px;
+          border-radius: 4px;
 }

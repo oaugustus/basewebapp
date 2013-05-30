@@ -64,8 +64,8 @@
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "layout|anchor": "100%",
                         "initialPassField": null,
+                        "layout|anchor": "100%",
                         "itemId": "txtNovaSenha",
                         "fieldLabel": "Nova senha",
                         "name": "novaSenha",
@@ -89,8 +89,8 @@
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "layout|anchor": "100%",
                         "initialPassField": "txtNovaSenha",
+                        "layout|anchor": "100%",
                         "itemId": "txtConfirmaSenha",
                         "fieldLabel": "Confirme a nova senha",
                         "name": "confirmaSenha",

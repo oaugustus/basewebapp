@@ -106,6 +106,28 @@
                 "metadata/resource/js1"
             ],
             "className": "js1"
+        },
+        "7c522591-08be-415c-8233-5ce0f900889d": {
+            "paths": [
+                "metadata/resource/css2"
+            ],
+            "className": "css2"
+        },
+        "e90321c4-c23c-411f-9df6-792d2c7b2534": {
+            "paths": [
+                "metadata/view/MyPanel1",
+                "app/view/override/MyPanel1.js",
+                "app/view/MyPanel1.js"
+            ],
+            "className": "MyPanel1"
+        },
+        "328a9e02-3118-4dfe-b019-811757f05e65": {
+            "paths": [
+                "metadata/view/MyPanel2",
+                "app/view/override/MyPanel2.js",
+                "app/view/MyPanel2.js"
+            ],
+            "className": "MyPanel2"
         }
     },
     "viewOrderMap": {
@@ -113,7 +135,9 @@
             "1482c17c-7c96-4250-b20e-c8532baf6c47",
             "cc4f24e4-a32f-425a-8b11-9b48b365d987",
             "cecbb789-55f4-41ca-8284-15b8f309c0ee",
-            "53636f36-1cca-4cca-925b-644d33e96b27"
+            "53636f36-1cca-4cca-925b-644d33e96b27",
+            "e90321c4-c23c-411f-9df6-792d2c7b2534",
+            "328a9e02-3118-4dfe-b019-811757f05e65"
         ],
         "store": [],
         "controller": [
@@ -129,7 +153,8 @@
             "ba18b735-4b45-4f2d-bbd0-44fa7a6a0030",
             "735596c5-e06a-4dd5-9787-da0f1fb6f91a",
             "e8094b29-0f10-4dd9-8b23-2f7e09e6d246",
-            "59759d72-80fb-423d-b45f-8ceaea3df4bc"
+            "59759d72-80fb-423d-b45f-8ceaea3df4bc",
+            "7c522591-08be-415c-8233-5ce0f900889d"
         ],
         "app": [
             "application"

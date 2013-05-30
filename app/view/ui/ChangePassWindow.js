@@ -60,8 +60,8 @@ Ext.define('App.view.ui.ChangePassWindow', {
                         },
                         {
                             xtype: 'textfield',
-                            anchor: '100%',
                             initialPassField: 'txtNovaSenha',
+                            anchor: '100%',
                             itemId: 'txtConfirmaSenha',
                             fieldLabel: 'Confirme a nova senha',
                             name: 'confirmaSenha',

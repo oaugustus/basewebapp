@@ -33,7 +33,9 @@ Ext.application({
         'ui.LoginPanel',
         'ui.Viewport',
         'ui.DashboardPanel',
-        'ui.ChangePassWindow'
+        'ui.ChangePassWindow',
+        'MyPanel1',
+        'MyPanel2'
     ],
     autoCreateViewport: true,
     controllers: [

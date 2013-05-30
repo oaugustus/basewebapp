@@ -16,6 +16,9 @@
 Ext.define('App.controller.ui.DashboardController', {
     extend: 'Ext.app.Controller',
 
+    activeModule: '',
+    startModule: 'panel',
+
     refs: [
         {
             ref: 'uiViewport',
@@ -26,6 +29,21 @@ Ext.define('App.controller.ui.DashboardController', {
             ref: 'changePassWindow',
             selector: 'changepasswindow',
             xtype: 'Ext.window.Window'
+        },
+        {
+            ref: 'dashboardPanel',
+            selector: 'dashboardpanel',
+            xtype: 'Ext.panel.Panel'
+        },
+        {
+            ref: 'ctModuleWrap',
+            selector: 'dashboardpanel #ctModuleWrap',
+            xtype: 'Ext.container.Container'
+        },
+        {
+            ref: 'ctModules',
+            selector: 'dashboardpanel #ctModules',
+            xtype: 'Ext.container.Container'
         }
     ],
 
@@ -36,6 +54,7 @@ Ext.define('App.controller.ui.DashboardController', {
                 location.reload();
             });
         }
+
     },this);
     },
 
@@ -51,7 +70,7 @@ Ext.define('App.controller.ui.DashboardController', {
         win.show();
     },
 
-    onChangePassShow: function(component, eOpts) {
+    changePassShow: function(component, eOpts) {
         component.down('#txtSenha').focus(false, 250);
     },
 
@@ -72,6 +91,22 @@ Ext.define('App.controller.ui.DashboardController', {
 
     changePassCancelarClick: function(button, e, eOpts) {
         this.getChangePassWindow().close();
+    },
+
+    onCtModulesRender: function(component, eOpts) {
+        component.getEl().on('mouseleave', this.registerCloseDelay, this);
+        component.getEl().on('mouseover', this.registerOpenDelay, this);
+    },
+
+    buttonModuleClick: function(button, e, eOpts) {
+        // se o botão tem definida a propriedade module
+        if (button.module){
+            this.activateModule(button.module);
+        }
+    },
+
+    onModuleWrapRender: function(component, eOpts) {
+        this.activateModule(this.startModule);
     },
 
     showDashboardPanel: function() {
@@ -134,6 +169,112 @@ Ext.define('App.controller.ui.DashboardController', {
         }
     },
 
+    registerCloseDelay: function() {
+        var runner = new Ext.util.TaskRunner()
+        me = this,
+        ctModules = me.getDashboardPanel().down('#ctModules');
+
+
+        // define a propriedade que avalia o fechamento do menu
+        me.closeMenu = true;
+
+        // cria a tarefa de fechamento do menu
+        var task = runner.newTask({
+            run: function(){
+                if (me.closeMenu){
+                    // ativa a toolbar de localização
+                    ctModules.getLayout().setActiveItem(0);
+
+                    me.openedMenu = false;
+                }
+            },
+            interval: 1000,
+            scope: me,
+            repeat: 1
+        });
+
+        // inicia a execução da tarefa
+        task.start();
+
+    },
+
+    registerOpenDelay: function() {
+        var runner = new Ext.util.TaskRunner(),
+            me = this,
+            ctModules = me.getDashboardPanel().down('#ctModules'),
+            activeButton = ctModules.down('button[module="'+me.activeModule+'"]');
+
+
+        // define a propriedade que avalia o fechamento do menu
+        me.closeMenu = false;
+
+        // cria a tarefa de fechamento do menu
+        var task = runner.newTask({
+            run: function(){
+                if (!me.closeMenu){            			
+                    if (!me.openedMenu){
+                        ctModules.down('#tabModule').setActiveTab(activeButton.up('panel'));                
+                    }
+                    ctModules.getLayout().setActiveItem(1);
+                    me.openedMenu = true;
+                }
+            },
+            interval: 400,
+            scope: me,
+            repeat: 1
+        });
+
+        // inicia a execução da tarefa
+        task.start();
+
+    },
+
+    activateModule: function(module) {
+        var me = this,
+            ctModuleWrap = me.getCtModuleWrap(),
+            ctModules = me.getCtModules();
+
+        // se o módulo ativo for diferente do módulo clicado
+        if (me.activeModule != module){
+
+            // seta o módulo ativo
+            me.activeModule = module;
+
+            // se o painel do módulo não estiver presente no container de módulos
+            if (!ctModuleWrap.down('#' + module)){
+                try{
+                    // adiciona o painel ao container de módulos
+                    ctModuleWrap.add({
+                        xtype: module,
+                        itemId: module
+                    });                
+                } catch(e) {
+                    console.log('Módulo: ' + module + ' não localizado!');
+                }
+            }
+
+            // ativa o módulo atual
+            ctModuleWrap.getLayout().setActiveItem(module);
+
+            // pressiona o botão
+            ctModules.down('#tabModule').down('button[module="'+module+'"]').toggle(true);
+
+            // seta a localização
+            this.setLocation(module);
+        }
+    },
+
+    setLocation: function(module) {
+        var me = this,
+            menuLocation = me.getCtModules().down('#menuLocation'),
+            activeButton = me.getCtModules().down('#tabModule').down('button[module="'+module+'"]');
+
+        menuLocation.down('#ctModule').update(activeButton.getText());
+        menuLocation.down('#ctApp').update(activeButton.up('panel').title);
+        menuLocation.down('#ctIcon').removeCls(menuLocation.down('#ctIcon').cls);
+        menuLocation.down('#ctIcon').addCls('locator-menu-icon ' + activeButton.iconCls);
+    },
+
     init: function(application) {
         this.control({
             "dashboardpanel #btnSair": {
@@ -146,7 +287,7 @@ Ext.define('App.controller.ui.DashboardController', {
                 click: this.onTrocaSenhaClick
             },
             "changepasswindow": {
-                show: this.onChangePassShow
+                show: this.changePassShow
             },
             "changepasswindow #form field": {
                 keypress: this.changePassFocusNextField
@@ -156,6 +297,15 @@ Ext.define('App.controller.ui.DashboardController', {
             },
             "changepasswindow #btnCancelar": {
                 click: this.changePassCancelarClick
+            },
+            "dashboardpanel #ctModules": {
+                render: this.onCtModulesRender
+            },
+            "dashboardpanel #tabModule button": {
+                click: this.buttonModuleClick
+            },
+            "dashboardpanel #ctModuleWrap": {
+                render: this.onModuleWrapRender
             }
         });
     }

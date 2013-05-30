@@ -19,3 +19,12 @@
 .icon-user-edit{
 	background-image: url(../images/user-edit.png) !important;
 }
+
+.icon-list-menu{
+	background-image: url(../images/list-menu.png) !important;
+}
+
+.locator-menu-icon{
+    background-repeat: no-repeat;
+    background-position: center center;    
+}
