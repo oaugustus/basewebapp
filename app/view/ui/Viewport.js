@@ -73,7 +73,7 @@ Ext.define('App.view.ui.Viewport', {
                                     height: 50,
                                     itemId: 'ctLogo',
                                     style: {
-                                        backgroundColor: '#ECECEC'
+                                        backgroundColor: '#fff'
                                     },
                                     width: 214
                                 },
