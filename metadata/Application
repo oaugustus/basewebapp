@@ -55,8 +55,12 @@
                     "} else {",
                     "    this.setSession(response);",
                     "    this.getController('ui.DashboardController').showDashboardPanel(response);",
-                    "    //Ext.ux.Router.init(this);",
-                    "    //this.setupRouter();",
+                    "    ",
+                    "    // registra o código de verificação da sessão aberta",
+                    "\tExt.TaskManager.start({",
+                    "        run: this.keepSession,",
+                    "        interval: 60000",
+                    "    });\t",
                     "}",
                     "},this);"
                 ]
@@ -115,6 +119,28 @@
                 ]
             },
             "designerId": "e57f3571-a09c-46c7-a98b-a2f1ed2ec846"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "keepSession",
+                "implHandler": [
+                    "Actions.NetonApp_Security.isLogged({}, function(response){",
+                    "    if (response === false){",
+                    "        Ext.Msg.alert('SESSÃO EXPIRADA','Sua sessão expirou e foi fechada. Efetue login novamente!', function(){",
+                    "            location.reload();",
+                    "        });",
+                    "        ",
+                    "    }",
+                    "},this);"
+                ]
+            },
+            "designerId": "bc3fa2ab-607d-44d7-a80b-9e0dadd17024"
         }
     ]
 }

@@ -6,9 +6,30 @@
     },
     "codeClass": null,
     "userConfig": {
+        "routeAlias": "login",
+        "routes": [
+            "{",
+            "    '/': 'index'",
+            "}"
+        ],
         "designer|userClassName": "ui.LoginController"
     },
+    "configAlternates": {
+        "routes": "object"
+    },
     "designerId": "d0af4295-3539-4295-bf9e-d13daab340d1",
+    "customConfigs": [
+        {
+            "group": "(Custom Properties)",
+            "name": "routeAlias",
+            "type": "string"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "routes",
+            "type": "string"
+        }
+    ],
     "cn": [
         {
             "type": "controlleraction",
@@ -299,6 +320,21 @@
                 "xtype": "Ext.container.Viewport"
             },
             "designerId": "0fc0fc77-d2a3-4914-8323-c3017e3c1206"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "index",
+                "implHandler": [
+                    ""
+                ]
+            },
+            "designerId": "f8b5c961-5640-42f1-8144-7d34c9002856"
         }
     ]
 }

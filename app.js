@@ -54,8 +54,12 @@ Ext.application({
         } else {
             this.setSession(response);
             this.getController('ui.DashboardController').showDashboardPanel(response);
-            //Ext.ux.Router.init(this);
-            //this.setupRouter();
+
+            // registra o código de verificação da sessão aberta
+            Ext.TaskManager.start({
+                run: this.keepSession,
+                interval: 60000
+            });	
         }
     },this);
     },
@@ -66,6 +70,17 @@ Ext.application({
 
     getSession: function() {
         return this.session;
+    },
+
+    keepSession: function() {
+        Actions.NetonApp_Security.isLogged({}, function(response){
+        if (response === false){
+            Ext.Msg.alert('SESSÃO EXPIRADA','Sua sessão expirou e foi fechada. Efetue login novamente!', function(){
+                location.reload();
+            });
+
+        }
+    },this);
     }
 
 });

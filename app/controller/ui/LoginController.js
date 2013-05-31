@@ -16,6 +16,11 @@
 Ext.define('App.controller.ui.LoginController', {
     extend: 'Ext.app.Controller',
 
+    routeAlias: 'login',
+    routes: {
+        '/': 'index'
+    },
+
     refs: [
         {
             ref: 'loginPanel',
@@ -127,6 +132,10 @@ Ext.define('App.controller.ui.LoginController', {
                 width: 200
             });
         }
+    },
+
+    index: function() {
+
     },
 
     init: function(application) {
