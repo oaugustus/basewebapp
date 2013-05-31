@@ -50,7 +50,7 @@
                         "itemId": "ctLogo",
                         "style": [
                             "{",
-                            "    backgroundColor: '#ECECEC'",
+                            "    backgroundColor: '#fff'",
                             "}"
                         ],
                         "width": 214

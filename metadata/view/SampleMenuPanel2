@@ -6,8 +6,8 @@
     },
     "codeClass": null,
     "userConfig": {
-        "designer|userClassName": "MyPanel2",
-        "designer|userAlias": "mypanel2",
+        "designer|userClassName": "SampleMenuPanel2",
+        "designer|userAlias": "samplemenupanel2",
         "title": "Cadastro"
     },
     "designerId": "328a9e02-3118-4dfe-b019-811757f05e65",

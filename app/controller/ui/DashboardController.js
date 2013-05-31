@@ -18,6 +18,10 @@ Ext.define('App.controller.ui.DashboardController', {
 
     activeModule: '',
     startModule: 'panel',
+    routeAlias: 'dashboard',
+    routes: {
+        
+    },
 
     refs: [
         {
@@ -70,7 +74,7 @@ Ext.define('App.controller.ui.DashboardController', {
         win.show();
     },
 
-    changePassShow: function(component, eOpts) {
+    onChangePassShow: function(component, eOpts) {
         component.down('#txtSenha').focus(false, 250);
     },
 
@@ -101,12 +105,17 @@ Ext.define('App.controller.ui.DashboardController', {
     buttonModuleClick: function(button, e, eOpts) {
         // se o botão tem definida a propriedade module
         if (button.module){
-            this.activateModule(button.module);
+            //this.activateModule(button.module);
+            Ext.ux.Router.redirect(button.module);
         }
     },
 
     onModuleWrapRender: function(component, eOpts) {
-        this.activateModule(this.startModule);
+        this.setupRouter();
+
+        if (!Ext.ux.Router.hasToken)
+        Ext.ux.Router.redirect(this.startModule);
+
     },
 
     showDashboardPanel: function() {
@@ -238,7 +247,7 @@ Ext.define('App.controller.ui.DashboardController', {
         if (me.activeModule != module){
 
             // seta o módulo ativo
-            me.activeModule = module;
+            me.activeModule = module;    
 
             // se o painel do módulo não estiver presente no container de módulos
             if (!ctModuleWrap.down('#' + module)){
@@ -260,7 +269,7 @@ Ext.define('App.controller.ui.DashboardController', {
             ctModules.down('#tabModule').down('button[module="'+module+'"]').toggle(true);
 
             // seta a localização
-            this.setLocation(module);
+            this.setLocation(module);    
         }
     },
 
@@ -275,6 +284,21 @@ Ext.define('App.controller.ui.DashboardController', {
         menuLocation.down('#ctIcon').addCls('locator-menu-icon ' + activeButton.iconCls);
     },
 
+    setupRouter: function() {
+        Ext.ux.Router.init(this.application);
+
+        Ext.ux.Router.on({    
+            routemissed: function(token) {
+                Ext.Msg.show({
+                    title:'Error 404',
+                    msg: 'Rota não encontrada para: ' + token,
+                    buttons: Ext.Msg.OK,
+                    icon: Ext.Msg.ERROR
+                });
+            }
+        });
+    },
+
     init: function(application) {
         this.control({
             "dashboardpanel #btnSair": {
@@ -287,7 +311,7 @@ Ext.define('App.controller.ui.DashboardController', {
                 click: this.onTrocaSenhaClick
             },
             "changepasswindow": {
-                show: this.changePassShow
+                show: this.onChangePassShow
             },
             "changepasswindow #form field": {
                 keypress: this.changePassFocusNextField

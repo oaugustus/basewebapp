@@ -8,7 +8,16 @@
     "userConfig": {
         "activeModule": "",
         "startModule": "panel",
+        "routeAlias": "dashboard",
+        "routes": [
+            "{",
+            "",
+            "}"
+        ],
         "designer|userClassName": "ui.DashboardController"
+    },
+    "configAlternates": {
+        "routes": "object"
     },
     "designerId": "4ae86203-6e98-44dd-b29a-1de4737ae823",
     "customConfigs": [
@@ -21,40 +30,19 @@
             "group": "(Custom Properties)",
             "name": "startModule",
             "type": "string"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "routeAlias",
+            "type": "string"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "routes",
+            "type": "string"
         }
     ],
     "cn": [
-        {
-            "type": "basicfunction",
-            "reference": {
-                "name": "items",
-                "type": "array"
-            },
-            "codeClass": null,
-            "userConfig": {
-                "fn": "showDashboardPanel",
-                "implHandler": [
-                    "var viewport = this.getUiViewport();",
-                    "",
-                    "Actions.NetonApp_Security.isLogged({}, function(response){",
-                    "",
-                    "if (response != false){",
-                    "    this.application.setSession(response);",
-                    "",
-                    "    if (!viewport.down('#panelDashboard')){    ",
-                    "        viewport.add({",
-                    "            xtype: 'dashboardpanel',",
-                    "            itemId: 'panelDashboard'",
-                    "        });    ",
-                    "    }",
-                    "",
-                    "    this.getUiViewport().getLayout().setActiveItem('panelDashboard');            ",
-                    "}",
-                    "},this);"
-                ]
-            },
-            "designerId": "ed84aaea-74b6-457d-baa2-7359b18f1696"
-        },
         {
             "type": "controllerref",
             "reference": {
@@ -145,7 +133,7 @@
             },
             "codeClass": null,
             "userConfig": {
-                "fn": "changePassShow",
+                "fn": "onChangePassShow",
                 "implHandler": [
                     "component.down('#txtSenha').focus(false, 250);"
                 ],
@@ -237,6 +225,37 @@
                 "xtype": "Ext.container.Container"
             },
             "designerId": "2c71482a-9f58-485d-986f-7eb7cec5f57d"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "showDashboardPanel",
+                "implHandler": [
+                    "var viewport = this.getUiViewport();",
+                    "",
+                    "Actions.NetonApp_Security.isLogged({}, function(response){",
+                    "",
+                    "if (response != false){",
+                    "    this.application.setSession(response);",
+                    "",
+                    "    if (!viewport.down('#panelDashboard')){    ",
+                    "        viewport.add({",
+                    "            xtype: 'dashboardpanel',",
+                    "            itemId: 'panelDashboard'",
+                    "        });    ",
+                    "    }",
+                    "",
+                    "    this.getUiViewport().getLayout().setActiveItem('panelDashboard');            ",
+                    "}",
+                    "},this);"
+                ]
+            },
+            "designerId": "ed84aaea-74b6-457d-baa2-7359b18f1696"
         },
         {
             "type": "basicfunction",
@@ -412,8 +431,8 @@
                 "fn": "registerOpenDelay",
                 "implHandler": [
                     "var runner = new Ext.util.TaskRunner(),",
-                    "\tme = this,",
-                    "\tctModules = me.getDashboardPanel().down('#ctModules'),",
+                    "    me = this,",
+                    "    ctModules = me.getDashboardPanel().down('#ctModules'),",
                     "    activeButton = ctModules.down('button[module=\"'+me.activeModule+'\"]');",
                     "",
                     "",
@@ -425,7 +444,7 @@
                     "    run: function(){",
                     "        if (!me.closeMenu){            \t\t\t",
                     "            if (!me.openedMenu){",
-                    "            \tctModules.down('#tabModule').setActiveTab(activeButton.up('panel'));                ",
+                    "                ctModules.down('#tabModule').setActiveTab(activeButton.up('panel'));                ",
                     "            }",
                     "            ctModules.getLayout().setActiveItem(1);",
                     "            me.openedMenu = true;",
@@ -455,7 +474,8 @@
                 "implHandler": [
                     "// se o botão tem definida a propriedade module",
                     "if (button.module){",
-                    "    this.activateModule(button.module);",
+                    "    //this.activateModule(button.module);",
+                    "    Ext.ux.Router.redirect(button.module);",
                     "}"
                 ],
                 "name": "click",
@@ -486,7 +506,7 @@
                     "if (me.activeModule != module){",
                     "",
                     "    // seta o módulo ativo",
-                    "    me.activeModule = module;",
+                    "    me.activeModule = module;    ",
                     "",
                     "    // se o painel do módulo não estiver presente no container de módulos",
                     "    if (!ctModuleWrap.down('#' + module)){",
@@ -503,12 +523,12 @@
                     "",
                     "    // ativa o módulo atual",
                     "    ctModuleWrap.getLayout().setActiveItem(module);",
-                    "    ",
+                    "",
                     "    // pressiona o botão",
                     "    ctModules.down('#tabModule').down('button[module=\"'+module+'\"]').toggle(true);",
-                    "    ",
+                    "",
                     "    // seta a localização",
-                    "    this.setLocation(module);",
+                    "    this.setLocation(module);    ",
                     "}"
                 ]
             },
@@ -524,7 +544,11 @@
             "userConfig": {
                 "fn": "onModuleWrapRender",
                 "implHandler": [
-                    "this.activateModule(this.startModule);"
+                    "this.setupRouter();",
+                    "",
+                    "if (!Ext.ux.Router.hasToken)",
+                    "\tExt.ux.Router.redirect(this.startModule);",
+                    ""
                 ],
                 "name": "render",
                 "scope": "me",
@@ -557,6 +581,32 @@
                 ]
             },
             "designerId": "d6e8dbbd-6e8c-4a5f-b873-aa66c4e6f719"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "setupRouter",
+                "implHandler": [
+                    "Ext.ux.Router.init(this.application);",
+                    "",
+                    "Ext.ux.Router.on({    ",
+                    "    routemissed: function(token) {",
+                    "        Ext.Msg.show({",
+                    "            title:'Error 404',",
+                    "            msg: 'Rota não encontrada para: ' + token,",
+                    "            buttons: Ext.Msg.OK,",
+                    "            icon: Ext.Msg.ERROR",
+                    "        });",
+                    "    }",
+                    "});"
+                ]
+            },
+            "designerId": "3ce4af59-a5db-46d7-b57d-0c12a069e54d"
         }
     ]
 }

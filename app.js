@@ -29,18 +29,20 @@ Ext.application({
     requires: [
         'Ext.ux.Router'
     ],
+    enableRouter: false,
     views: [
         'ui.LoginPanel',
         'ui.Viewport',
         'ui.DashboardPanel',
         'ui.ChangePassWindow',
-        'MyPanel1',
-        'MyPanel2'
+        'SampleMenuPanel1',
+        'SampleMenuPanel2'
     ],
     autoCreateViewport: true,
     controllers: [
         'ui.LoginController',
-        'ui.DashboardController'
+        'ui.DashboardController',
+        'module.SampleController'
     ],
     name: 'App',
 
@@ -52,6 +54,8 @@ Ext.application({
         } else {
             this.setSession(response);
             this.getController('ui.DashboardController').showDashboardPanel(response);
+            //Ext.ux.Router.init(this);
+            //this.setupRouter();
         }
     },this);
     },

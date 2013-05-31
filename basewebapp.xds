@@ -115,19 +115,27 @@
         },
         "e90321c4-c23c-411f-9df6-792d2c7b2534": {
             "paths": [
-                "metadata/view/MyPanel1",
-                "app/view/override/MyPanel1.js",
-                "app/view/MyPanel1.js"
+                "metadata/view/SampleMenuPanel1",
+                "app/view/override/SampleMenuPanel1.js",
+                "app/view/SampleMenuPanel1.js"
             ],
-            "className": "MyPanel1"
+            "className": "SampleMenuPanel1"
         },
         "328a9e02-3118-4dfe-b019-811757f05e65": {
             "paths": [
-                "metadata/view/MyPanel2",
-                "app/view/override/MyPanel2.js",
-                "app/view/MyPanel2.js"
+                "metadata/view/SampleMenuPanel2",
+                "app/view/override/SampleMenuPanel2.js",
+                "app/view/SampleMenuPanel2.js"
             ],
-            "className": "MyPanel2"
+            "className": "SampleMenuPanel2"
+        },
+        "1176044b-bc68-48ec-980a-4ae8c03c2ba9": {
+            "paths": [
+                "metadata/controller/module.SampleController",
+                "app/controller/override/module/SampleController.js",
+                "app/controller/module/SampleController.js"
+            ],
+            "className": "module.SampleController"
         }
     },
     "viewOrderMap": {
@@ -142,7 +150,8 @@
         "store": [],
         "controller": [
             "d0af4295-3539-4295-bf9e-d13daab340d1",
-            "4ae86203-6e98-44dd-b29a-1de4737ae823"
+            "4ae86203-6e98-44dd-b29a-1de4737ae823",
+            "1176044b-bc68-48ec-980a-4ae8c03c2ba9"
         ],
         "model": [],
         "resource": [

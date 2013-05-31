@@ -18,8 +18,8 @@ Ext.define('App.view.ui.DashboardPanel', {
     alias: 'widget.dashboardpanel',
 
     requires: [
-        'App.view.MyPanel1',
-        'App.view.MyPanel2'
+        'App.view.SampleMenuPanel1',
+        'App.view.SampleMenuPanel2'
     ],
 
     itemId: 'panelDashboard',
@@ -48,7 +48,7 @@ Ext.define('App.view.ui.DashboardPanel', {
                             height: 50,
                             itemId: 'ctLogo',
                             style: {
-                                backgroundColor: '#ECECEC'
+                                backgroundColor: '#fff'
                             },
                             width: 214
                         },
@@ -150,10 +150,10 @@ Ext.define('App.view.ui.DashboardPanel', {
                             activeTab: 0,
                             items: [
                                 {
-                                    xtype: 'mypanel1'
+                                    xtype: 'samplemenupanel1'
                                 },
                                 {
-                                    xtype: 'mypanel2'
+                                    xtype: 'samplemenupanel2'
                                 }
                             ]
                         }

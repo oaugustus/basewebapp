@@ -6,8 +6,8 @@
     },
     "codeClass": null,
     "userConfig": {
-        "designer|userClassName": "MyPanel1",
-        "designer|userAlias": "mypanel1",
+        "designer|userClassName": "SampleMenuPanel1",
+        "designer|userAlias": "samplemenupanel1",
         "title": "Início"
     },
     "designerId": "e90321c4-c23c-411f-9df6-792d2c7b2534",
